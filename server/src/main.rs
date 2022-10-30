@@ -34,6 +34,7 @@ enum RequestError {
 
 #[derive(serde::Deserialize)]
 struct Config {
+    address: String,
     wol_config: WolConfig,
 }
 
@@ -88,7 +89,7 @@ fn main() -> std::io::Result<()> {
     let args = Args::parse();
     let config = Box::leak(Box::new(Config::load(&args.config)?));
 
-    let listener = TcpListener::bind("127.0.0.1:7878")?;
+    let listener = TcpListener::bind(&config.address)?;
 
     for stream in listener.incoming() {
         thread::spawn(|| match handle_request(stream, config) {
