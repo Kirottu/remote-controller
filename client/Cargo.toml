@@ -1,0 +1,18 @@
+[package]
+name = "remote-controller"
+version = "0.1.0"
+authors = ["Kirottu <kirottualt@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "remote-controller-desktop"
+path = "gen/bin/desktop.rs"
+
+[dependencies]
+mobile-entry-point = "0.1.0"
+dioxus = "0.2.4"
+dioxus-desktop = "0.2.3"
+log = "0.4.11"
