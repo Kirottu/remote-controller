@@ -1,5 +1,0 @@
-[app]
-name = "remote-controller"
-stylized-name = "Remote Controller"
-domain = "kirottu.com"
-template-pack = "winit"

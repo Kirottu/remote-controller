@@ -1,18 +1,17 @@
 [package]
 name = "remote-controller"
 version = "0.1.0"
-authors = ["Kirottu <kirottualt@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
-[lib]
-crate-type = ["staticlib", "cdylib", "rlib"]
-
-[[bin]]
-name = "remote-controller-desktop"
-path = "gen/bin/desktop.rs"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-mobile-entry-point = "0.1.0"
-dioxus = "0.2.4"
-dioxus-desktop = "0.2.3"
-log = "0.4.11"
+egui = "0.19.0"
+egui-miniquad = "0.12.0"
+miniquad = "0.3.13"
+reqwest = { version = "0.11.12", default-features = false, features = [ "blocking", "rustls" ] }
+ron = "0.8.0"
+serde = { version = "1.0.147", features = ["derive"] }
+
+[target.'cfg(target_os = "android")'.dependencies]
+ndk-glue = "0.7.0"
